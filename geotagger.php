@@ -77,6 +77,9 @@ else
 	  .error {
 		background-color: red;
 	  }
+	  .welcome {
+		background-color: grey;
+	  }
 	  .success {
 		background-color: green;
 	  }
@@ -92,7 +95,7 @@ else
 		<input type="button" id="search" value="Search" />
 	</form>
 	<div id="wrapper">
-		<div id="searchResults"></div>
+		<div id="searchResults"><p class="message welcome">Search for something!</p></div>
 		<div id="map"></div>
 	</div>
 	<script>
