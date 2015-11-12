@@ -143,7 +143,13 @@ else
 		
 		$.get($url, function( data ) {
 		  $("#searchResults").html( data );
+		  
+		  //register the event magic
+		  $("#allImagesBottom").click(function() { toggleCheckboxes(this.checked) });
+		  $("#allImagesTop").click(function() { toggleCheckboxes(this.checked) });
+		  $("#updateCoords").click(updateImageCoords);
 		});
+		
 		return false;
 	}
 	
@@ -202,7 +208,7 @@ function drawResults()
 ?>
 	<form id="imageForm">
 	<div class="imageOptionPanel">
-		<label for="allImagesTop">All<input type="checkbox" id="allImagesTop" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /></label>
+		<label for="allImagesTop">All<input type="checkbox" id="allImagesTop" class="imageCheckbox" /></label>
 	</div>
 <?php
 	$includes = $_GET["includes"];
@@ -233,10 +239,10 @@ function drawResults()
 	}
 ?>
 	<div class="imageOptionPanel">
-		<label for="allImagesBottom">All<input type="checkbox" id="allImagesBottom" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /></label>
+		<label for="allImagesBottom">All<input type="checkbox" id="allImagesBottom" class="imageCheckbox" /></label>
 	</div>
 	<div id="updateCoordsPanel">
-		<input type="button" id="updateCoords" value="Update Coords" onclick="updateImageCoords()" />
+		<input type="button" id="updateCoords" value="Update Coords" />
 	</div>
 </form>
 <?php
