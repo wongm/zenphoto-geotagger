@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET["includes"]))
+if (isset($_GET["action"]))
 {
 	drawResults();
 }
@@ -139,7 +139,7 @@ else
     });
 	
 	function runSearch() {
-		$url = "?includes=" + $("#includes").val() + "&excludes=" + $("#excludes").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&includeGeocoded=" + document.getElementById("includeGeocoded").checked;
+		$url = "?action=search&includes=" + $("#includes").val() + "&excludes=" + $("#excludes").val() + "&dateFrom=" + $("#dateFrom").val() + "&dateTo=" + $("#dateTo").val() + "&includeGeocoded=" + document.getElementById("includeGeocoded").checked;
 		
 		$.get($url, function( data ) {
 		  $("#searchResults").html( data );
@@ -208,11 +208,11 @@ function drawResults()
 	$dateTo = $_GET["dateTo"];
 	$includeGeocoded = $_GET["includeGeocoded"];
 	
-	echo "includeGeocoded = $includeGeocoded<BR>";
-	echo "includes = $includes<BR>";
-	echo "excludes = $excludes<BR>";
-	echo "dateFrom = $dateFrom<BR>";
-	echo "dateTo = $dateTo<BR>";
+	//echo "includeGeocoded = $includeGeocoded<BR>";
+	//echo "includes = $includes<BR>";
+	//echo "excludes = $excludes<BR>";
+	//echo "dateFrom = $dateFrom<BR>";
+	//echo "dateTo = $dateTo<BR>";
 	
 	for ($imageId = 4564; $imageId <= 4600; $imageId++)
 	{
