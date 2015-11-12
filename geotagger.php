@@ -43,7 +43,43 @@ else
 		float: left;
 		overflow-y: scroll;
 		overflow-x: hidden;
+	  }
+	  #imageForm {
+		padding-bottom: 30px;
       }
+	  #updateCoordsPanel {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background: white;
+		padding: 5px;
+	  }
+	  #updateCoords {
+		width: 290px;
+	  }
+	  .imageCheckbox {
+		float: right;
+	  }
+	  .imageOptionPanel {
+		border-bottom: 1px solid black;
+		padding: 5px;
+	  }
+	  .imageOptionPanel label {
+	    width: 100%;
+		display: block;
+	  }
+	  .message {
+		color: white;
+		padding: 10px;
+		margin: 10px;
+		text-align: center;
+	  }
+	  .error {
+		background-color: red;
+	  }
+	  .success {
+		background-color: green;
+	  }
     </style>
   </head>
   <body>
@@ -132,13 +168,15 @@ else
 		});
 		
 		request.done(function() {
-			console.log( "success" );
+			console.log( "update request success" );
+			$("#searchResults").html( '<p class="message success">Image update successful!</p>' );
 		});
 		request.fail(function() {
-			console.log( "error" );
+			console.log( "update request error" );
+			$("#searchResults").html( '<p class="message error">Image update FAILED!</p>' );
 		});
 		request.always(function() {
-			console.log( "finished" );
+			console.log( "finished update request" );
 		});
 	
 		return false;
@@ -159,8 +197,10 @@ else
 function drawResults()
 {
 ?>
-	<form id="imageform">
-	<label for="allImagesTop">All</label><input type="checkbox" id="allImagesTop" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /><br />
+	<form id="imageForm">
+	<div class="imageOptionPanel">
+		<label for="allImagesTop">All<input type="checkbox" id="allImagesTop" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /></label>
+	</div>
 <?php
 	$includes = $_GET["includes"];
 	$excludes = $_GET["excludes"];
@@ -176,13 +216,25 @@ function drawResults()
 	
 	for ($imageId = 4564; $imageId <= 4600; $imageId++)
 	{
+		$caption = "Caption for image $imageId is here";
+		$description = "Description for image $imageId is here";
 ?>
-<label for="image<?php echo $imageId ?>"><?php echo $imageId ?></label><input type="checkbox" id="image<?php echo $imageId ?>" value="<?php echo $imageId ?>" class="imageCheckbox imageOption"><br />
+	<div class="imageOptionPanel">
+		<input type="checkbox" id="image<?php echo $imageId ?>" value="<?php echo $imageId ?>" class="imageCheckbox imageOption">
+		<label for="image<?php echo $imageId ?>">
+			<img src="http://railgallery.wongm.com/cache/connex/D139_3947_250_thumb.jpg" alt="<?php= $caption ?>" />
+			<?php echo $caption ?> / <?php echo $description ?>
+		</label>
+	</div>
 <?php
 	}
 ?>
-	<label for="allImagesBottom">All</label><input type="checkbox" id="allImagesBottom" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /><br />
-	<input type="button" id="updateCoords" value="Update Coords" onclick="updateImageCoords()" />
+	<div class="imageOptionPanel">
+		<label for="allImagesBottom">All<input type="checkbox" id="allImagesBottom" class="imageCheckbox" onclick="toggleCheckboxes(this.checked)" /></label>
+	</div>
+	<div id="updateCoordsPanel">
+		<input type="button" id="updateCoords" value="Update Coords" onclick="updateImageCoords()" />
+	</div>
 </form>
 <?php
 }
