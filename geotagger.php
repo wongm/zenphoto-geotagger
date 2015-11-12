@@ -155,6 +155,11 @@ else
 			}
 		});
 		
+		if (selectedImages.length == 0) {
+			alert("Select an image to geotag!");
+			return false;
+		}
+		
 		var data = { 
 			images: selectedImages,
 			lat: lat,
@@ -168,12 +173,10 @@ else
 		});
 		
 		request.done(function() {
-			console.log( "update request success" );
-			$("#searchResults").html( '<p class="message success">Image update successful!</p>' );
+			$("#searchResults").html( '<p class="message success">Geotagging of ' + selectedImages.length + ' images successful!</p>' );
 		});
 		request.fail(function() {
-			console.log( "update request error" );
-			$("#searchResults").html( '<p class="message error">Image update FAILED!</p>' );
+			$("#searchResults").html( '<p class="message error">Geotagging of ' + selectedImages.length + ' images FAILED!</p>' );
 		});
 		request.always(function() {
 			console.log( "finished update request" );
