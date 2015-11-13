@@ -28,8 +28,8 @@ else
 				<div id="actionMessage"></div>
 				<label for="includes">Includes</label><input type="text" id="includes" />
 				<label for="excludes">Excludes</label><input type="text" id="excludes" />
-				<label for="dateFrom">From</label><input type="text" id="dateFrom" class="datepicker" />
-				<label for="dateTo">To</label><input type="text" id="dateTo" class="datepicker" />
+				<label for="dateFrom">From</label><input type="text" id="dateFrom" class="datepicker" placeholder="2015-01-01" />
+				<label for="dateTo">To</label><input type="text" id="dateTo" class="datepicker" placeholder="2015-12-12" />
 				<label for="includeGeocoded">Inc. geocoded</label><input type="checkbox" id="includeGeocoded" />
 				<div id="locationPanel">
 					<label for="lat">Latitude</label><input readonly type="text" id="lat" />
