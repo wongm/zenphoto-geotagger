@@ -23,7 +23,7 @@ else
   <body>
 	<div id="wrapper">
 		<div id="searchForm" class="sidebar">
-			<form>
+			<div id="searchPanel">
 				<h1>Zenphoto Geotagger</h1>
 				<div id="actionMessage"></div>
 				<label for="includes">Includes</label><input type="text" id="includes" />
@@ -31,7 +31,11 @@ else
 				<label for="dateFrom">From</label><input type="text" id="dateFrom" class="datepicker" />
 				<label for="dateTo">To</label><input type="text" id="dateTo" class="datepicker" />
 				<label for="includeGeocoded">Inc. geocoded</label><input type="checkbox" id="includeGeocoded" />
-			</form>
+				<div id="locationPanel">
+					<label for="lat">Latitude</label><input readonly type="text" id="lat" />
+					<label for="lng">Longitude</label><input readonly type="text" id="lng" />
+				</div>
+			</div>
 			<div class="actionPanel">
 				<input type="button" id="search" value="Search for images" />
 			</div>

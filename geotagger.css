@@ -14,18 +14,21 @@ h1 {
 	left: 0;
 	right: 0;
 }
-#searchForm form {
+#searchPanel {
 	padding: 5px;
 }
-#searchForm label {
+#searchPanel label {
 	float: left;
-	min-width: 80px;
+	min-width: 95px;
 	margin: 5px 0;
 	clear: both;
 }
-#searchForm form input {
-	float: right;
+#searchPanel input {
 	margin: 5px 0;
+}
+#locationPanel {
+	position: absolute;
+    bottom: 45px;
 }
 #map {
 	height: 100%;

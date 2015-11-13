@@ -1,6 +1,4 @@
 var map;
-var lat;
-var lng;
 
 $(function() {
 	$(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
@@ -36,8 +34,8 @@ function initMap() {
 }
 
 function updateLatLng(latLng) {
-	lat = latLng.lat();
-	lng = latLng.lng();
+	$('#lat').val(latLng.lat());
+	$('#lng').val(latLng.lng());
 }
 
 function runSearch() {
@@ -74,8 +72,8 @@ function updateImageCoords() {
 	
 	var data = { 
 		images: selectedImages,
-		lat: lat,
-		lng, lng,
+		lat: $("#lat").val(),
+		lng: $("#lng").val(),
 	};
 	
 	var request = $.ajax({
