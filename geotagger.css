@@ -2,40 +2,55 @@ html, body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
+	font: 13px arial, sans-serif;
+}
+h1 {
+    margin: 0 0 10px;
 }
 #wrapper {
 	position: absolute;
-	top: 35px;
+	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 }
-#searchForm {
+#searchForm form {
 	padding: 5px;
-	height: 35px;
+}
+#searchForm label {
+	float: left;
+	min-width: 80px;
+	margin: 5px 0;
+	clear: both;
+}
+#searchForm form input {
+	float: right;
+	margin: 5px 0;
 }
 #map {
 	height: 100%;
 }
-#searchResults {
-	height: 100%;
-	width: 300px;
-	float: left;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
 #imageForm {
 	padding-bottom: 30px;
 }
-#updateCoordsPanel {
+.actionPanel {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
 	background: white;
 	padding: 5px;
 }
-#updateCoords {
+.actionPanel input  {
+	font-weight: bold;
+	font-size: 18px;
 	width: 290px;
+}
+.sidebar {
+	height: 100%;
+	width: 300px;
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .imageCheckbox {
 	float: right;
@@ -51,7 +66,7 @@ html, body {
 .message {
 	color: white;
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 0;
 	text-align: center;
 }
 .error {

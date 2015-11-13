@@ -45,6 +45,9 @@ function runSearch() {
 	
 	
 	$.get($url, function( data ) {
+		$("#searchResults").toggle();
+		$("#searchForm").toggle();
+	
 		$("#searchResults").html( data );
 
 		//register the event magic
@@ -82,12 +85,14 @@ function updateImageCoords() {
 	});
 	
 	request.done(function() {
-		$("#searchResults").html( '<p class="message success">Geotagging of ' + selectedImages.length + ' images successful!</p>' );
+		$("#actionMessage").html( '<p class="message success">Geotagging of ' + selectedImages.length + ' images successful!</p>' );
 	});
 	request.fail(function() {
-		$("#searchResults").html( '<p class="message error">Geotagging of ' + selectedImages.length + ' images FAILED!</p>' );
+		$("#actionMessage").html( '<p class="message error">Geotagging of ' + selectedImages.length + ' images FAILED!</p>' );
 	});
 	request.always(function() {
+		$("#searchResults").toggle();
+		$("#searchForm").toggle();
 	});
 
 	return false;

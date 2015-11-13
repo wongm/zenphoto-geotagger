@@ -21,16 +21,22 @@ else
 	<link rel="stylesheet" type="text/css" media="screen" href="geotagger.css" />
   </head>
   <body>
-	<form id="searchForm">
-		<label for="includes">Includes</label><input type="text" id="includes" />
-		<label for="excludes">Excludes</label><input type="text" id="excludes" />
-		<label for="dateFrom">From</label><input type="text" id="dateFrom" class="datepicker" />
-		<label for="dateTo">To</label><input type="text" id="dateTo" class="datepicker" />
-		<label for="includeGeocoded">Inc. geocoded</label><input type="checkbox" id="includeGeocoded" />
-		<input type="button" id="search" value="Search" />
-	</form>
 	<div id="wrapper">
-		<div id="searchResults"><p class="message welcome">Search for something!</p></div>
+		<div id="searchForm" class="sidebar">
+			<form>
+				<h1>Zenphoto Geotagger</h1>
+				<div id="actionMessage"></div>
+				<label for="includes">Includes</label><input type="text" id="includes" />
+				<label for="excludes">Excludes</label><input type="text" id="excludes" />
+				<label for="dateFrom">From</label><input type="text" id="dateFrom" class="datepicker" />
+				<label for="dateTo">To</label><input type="text" id="dateTo" class="datepicker" />
+				<label for="includeGeocoded">Inc. geocoded</label><input type="checkbox" id="includeGeocoded" />
+			</form>
+			<div class="actionPanel">
+				<input type="button" id="search" value="Search for images" />
+			</div>
+		</div>
+		<div id="searchResults" class="sidebar" style="display:none"></div>
 		<div id="map"></div>
 	</div>
 	<script src="//maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
@@ -77,8 +83,8 @@ function drawResults()
 	<div class="imageOptionPanel">
 		<label for="allImagesBottom">All<input type="checkbox" id="allImagesBottom" class="imageCheckbox" /></label>
 	</div>
-	<div id="updateCoordsPanel">
-		<input type="button" id="updateCoords" value="Update Coords" />
+	<div class="actionPanel">
+		<input type="button" id="updateCoords" value="Update image coordinates" />
 	</div>
 </form>
 <?php
