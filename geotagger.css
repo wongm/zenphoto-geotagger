@@ -1,0 +1,65 @@
+html, body {
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#wrapper {
+	position: absolute;
+	top: 35px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+#searchForm {
+	padding: 5px;
+	height: 35px;
+}
+#map {
+	height: 100%;
+}
+#searchResults {
+	height: 100%;
+	width: 300px;
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#imageForm {
+	padding-bottom: 30px;
+}
+#updateCoordsPanel {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: white;
+	padding: 5px;
+}
+#updateCoords {
+	width: 290px;
+}
+.imageCheckbox {
+	float: right;
+}
+.imageOptionPanel {
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+.imageOptionPanel label {
+	width: 100%;
+	display: block;
+}
+.message {
+	color: white;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+}
+.error {
+	background-color: red;
+}
+.welcome {
+	background-color: grey;
+}
+.success {
+	background-color: green;
+}
