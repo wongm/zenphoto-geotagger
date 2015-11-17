@@ -107,7 +107,10 @@ function processRequest()
 
 	foreach($_POST["images"] as $imageId)
 	{
-		$sql = "UPDATE " . prefix('images') . " SET EXIFGPSLatitude = " . $lat . ", EXIFGPSLongitude = " . $lng . " WHERE id = " . $imageId;
+		$latRef = ($lat > 0) ? 'N' : 'S';
+		$lngRef = ($lng > 0) ? 'E' : 'W';
+		
+		$sql = "UPDATE " . prefix('images') . " SET EXIFGPSLatitude = " . abs($lat) . ", EXIFGPSLongitude = " . abs($lng) . ", EXIFGPSLatitudeRef = " . db_quote($latRef) . ", EXIFGPSLongitudeRef = " . db_quote($lngRef) . " WHERE id = " . $imageId;
 		query($sql);
 	}
 }
