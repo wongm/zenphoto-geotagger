@@ -9,7 +9,7 @@ function drawResults()
 		<label for="allImagesTop"><?php echo gettext("All") ?><input type="checkbox" id="allImagesTop" class="imageCheckbox" /></label>
 	</div>
 	<div class="imageOptionPanel">
-		<a class="cancelSearch">Cancel</a>
+		<label class="cancelSearch">Cancel</label>
 	</div>
 <?php
 	$includes = $_GET["includes"];
@@ -80,7 +80,7 @@ function drawResults()
 		<label for="allImagesBottom"><?php echo gettext("All") ?><input type="checkbox" id="allImagesBottom" class="imageCheckbox" /></label>
 	</div>
 	<div class="imageOptionPanel">
-		<a class="cancelSearch">Cancel</a>
+		<label class="cancelSearch">Cancel</label>
 	</div>
 	<div class="actionPanel">
 		<input type="button" id="updateCoords" value="<?php echo gettext("Update images") ?>" />
