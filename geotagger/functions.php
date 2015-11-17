@@ -35,7 +35,7 @@ function drawResults()
 	{
 		$sqlWhere .= " AND i.date <= " . db_quote($dateTo);
 	}
-	if (strlen($includeGeocoded) == 0)
+	if ($includeGeocoded != 'true')
 	{
 		$sqlWhere .= " AND i.EXIFGPSLatitude IS NULL AND i.EXIFGPSLongitude IS NULL";
 	}
@@ -107,7 +107,8 @@ function processRequest()
 
 	foreach($_POST["images"] as $imageId)
 	{
-		echo "SET $imageId to $lat, $lng<br>";
+		$sql = "UPDATE " . prefix('images') . " SET EXIFGPSLatitude = " . $lat . ", EXIFGPSLongitude = " . $lng . " WHERE id = " . $imageId;
+		query($sql);
 	}
 }
 
