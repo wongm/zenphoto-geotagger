@@ -25,6 +25,7 @@ h1 {
 }
 #searchPanel input {
 	margin: 5px 0;
+	float: left;
 }
 #locationPanel {
 	position: absolute;
