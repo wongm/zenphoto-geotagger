@@ -15,13 +15,27 @@ function drawResults()
 	$dateTo = $_GET["dateTo"];
 	$includeGeocoded = $_GET["includeGeocoded"];
 	
-	//echo "includeGeocoded = $includeGeocoded<BR>";
-	//echo "includes = $includes<BR>";
-	//echo "excludes = $excludes<BR>";
-	//echo "dateFrom = $dateFrom<BR>";
-	//echo "dateTo = $dateTo<BR>";
-	
 	$sqlWhere  = "1=1";
+	if (strlen($includes) > 0)
+	{
+		$sqlWhere .= " AND (i.title LIKE " . db_quote("%" . $includes . "%") . " OR i.desc LIKE " . db_quote("%" . $includes . "%") . ")";
+	}
+	if (strlen($excludes) > 0)
+	{
+		$sqlWhere .= " AND (IFNULL(i.title, '') NOT LIKE " . db_quote("%" . $excludes . "%") . " AND IFNULL(i.desc, '') NOT LIKE " . db_quote("%" . $excludes . "%") . ")";
+	}
+	if (strlen($dateFrom) > 0)
+	{
+		$sqlWhere .= " AND i.date >= " . db_quote($dateFrom);
+	}
+	if (strlen($dateTo) > 0)
+	{
+		$sqlWhere .= " AND i.date <= " . db_quote($dateTo);
+	}
+	if (strlen($includeGeocoded) == 0)
+	{
+		$sqlWhere .= " AND i.EXIFGPSLatitude IS NULL AND i.EXIFGPSLongitude IS NULL";
+	}
 	
 	$sql = "SELECT i.id, i.filename, i.title, i.filename, i.mtime, i.desc, a.folder, a.title AS album_title
 			FROM " . prefix('images') . " i
