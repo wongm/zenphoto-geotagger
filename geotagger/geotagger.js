@@ -3,6 +3,12 @@ var map;
 $(function() {
 	$(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 	$("#search").click(runSearch);
+	$('#searchPanel input').keypress(function (e) {
+		if (e.which == 13) {
+			runSearch();
+			return false;
+		}
+	});
 });
 
 function initMap() {
@@ -52,6 +58,7 @@ function runSearch() {
 		$("#allImagesBottom").click(function() { toggleCheckboxes(this.checked) });
 		$("#allImagesTop").click(function() { toggleCheckboxes(this.checked) });
 		$("#updateCoords").click(updateImageCoords);
+		$(".cancelSearch").click(displaySearch);
 	});
 	
 	return false;
@@ -89,11 +96,15 @@ function updateImageCoords() {
 		$("#actionMessage").html( '<p class="message error">Geotagging of ' + selectedImages.length + ' images FAILED!</p>' );
 	});
 	request.always(function() {
-		$("#searchResults").toggle();
-		$("#searchForm").toggle();
+		displaySearch();
 	});
 
 	return false;
+}
+
+function displaySearch() {
+	$("#searchResults").toggle();
+	$("#searchForm").toggle();
 }
 
 function toggleCheckboxes(selectAll) {

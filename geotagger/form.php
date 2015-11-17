@@ -10,7 +10,7 @@
   </head>
   <body>
 	<div id="wrapper">
-		<div id="searchForm" class="sidebar">
+		<form id="searchForm" class="sidebar">
 			<div id="searchPanel">
 				<h1>Zenphoto Geotagger</h1>
 				<div id="actionMessage"></div>
@@ -27,7 +27,7 @@
 			<div class="actionPanel">
 				<input type="button" id="search" value="Search for images" />
 			</div>
-		</div>
+		</form>
 		<div id="searchResults" class="sidebar" style="display:none"></div>
 		<div id="map"></div>
 	</div>

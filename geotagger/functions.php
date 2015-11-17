@@ -4,9 +4,12 @@ function drawResults()
 {
 	$locale = null;
 ?>
-	<form id="imageForm">
+<form id="imageForm">
 	<div class="imageOptionPanel">
 		<label for="allImagesTop"><?php echo gettext("All") ?><input type="checkbox" id="allImagesTop" class="imageCheckbox" /></label>
+	</div>
+	<div class="imageOptionPanel">
+		<a class="cancelSearch">Cancel</a>
 	</div>
 <?php
 	$includes = $_GET["includes"];
@@ -42,10 +45,10 @@ function drawResults()
 			INNER JOIN " . prefix('albums') . " a ON i.albumid = a.id 
 			WHERE " . $sqlWhere . " LIMIT 0, 20";
 	$imageResults = query_full_array($sql);
+	$imageId = 0;
 	
 	foreach ($imageResults as $image)
 	{
-	
 		$imageId = $image['id'];
 		$album = get_language_string($image['album_title'], $locale);
 		$caption = get_language_string($image['title'], $locale);
@@ -69,13 +72,30 @@ function drawResults()
 	</div>
 <?php
 	}
+	
+	if ($imageId > 0) 
+	{
 ?>
 	<div class="imageOptionPanel">
 		<label for="allImagesBottom"><?php echo gettext("All") ?><input type="checkbox" id="allImagesBottom" class="imageCheckbox" /></label>
 	</div>
-	<div class="actionPanel">
-		<input type="button" id="updateCoords" value="<?php echo gettext("Update image coordinates") ?>" />
+	<div class="imageOptionPanel">
+		<a class="cancelSearch">Cancel</a>
 	</div>
+	<div class="actionPanel">
+		<input type="button" id="updateCoords" value="<?php echo gettext("Update images") ?>" />
+	</div>
+	<?php 
+	}
+	else
+	{
+?>
+	<div class="actionPanel">
+		<input type="button" class="cancelSearch" value="<?php echo gettext("Return") ?>" />
+	</div>
+<?
+	}
+	?>
 </form>
 <?php
 }
