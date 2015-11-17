@@ -2,6 +2,7 @@
 
 function drawResults()
 {
+	$locale = null;
 ?>
 	<form id="imageForm">
 	<div class="imageOptionPanel">
@@ -20,16 +21,36 @@ function drawResults()
 	//echo "dateFrom = $dateFrom<BR>";
 	//echo "dateTo = $dateTo<BR>";
 	
-	for ($imageId = 4564; $imageId <= 4600; $imageId++)
+	$sqlWhere  = "1=1";
+	
+	$sql = "SELECT i.id, i.filename, i.title, i.filename, i.mtime, i.desc, a.folder, a.title AS album_title
+			FROM " . prefix('images') . " i
+			INNER JOIN " . prefix('albums') . " a ON i.albumid = a.id 
+			WHERE " . $sqlWhere . " LIMIT 0, 20";
+	$imageResults = query_full_array($sql);
+	
+	foreach ($imageResults as $image)
 	{
-		$caption = "Caption for image $imageId is here";
-		$description = "Description for image $imageId is here";
+	
+		$imageId = $image['id'];
+		$album = get_language_string($image['album_title'], $locale);
+		$caption = get_language_string($image['title'], $locale);
+		$description = get_language_string($image['desc'], $locale);
+		
+		$args = getImageParameters(array(250));
+		$filename = getImageURI($args, $image['folder'], $image['filename'], $image['mtime']);
+		
+		if (strlen($description) > 0)
+		{
+			$caption = '<abbr title="' . $description . '">' . $caption .'</abbr>';
+		}
 ?>
 	<div class="imageOptionPanel">
 		<input type="checkbox" id="image<?php echo $imageId ?>" value="<?php echo $imageId ?>" class="imageCheckbox imageOption">
 		<label for="image<?php echo $imageId ?>">
-			<img src="http://railgallery.wongm.com/cache/connex/D139_3947_250_thumb.jpg" alt="<?php echo $caption ?>" />
-			<?php echo $caption ?> / <?php echo $description ?>
+			<img src="<?php echo $filename ?>" alt="<?php echo $image['title'] ?>" /><br />
+			<?php echo $caption ?><br />
+			In album: <?php echo $album ?>
 		</label>
 	</div>
 <?php
