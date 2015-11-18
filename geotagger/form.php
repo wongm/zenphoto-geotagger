@@ -30,8 +30,9 @@
 			</div>
 		</form>
 		<div id="searchResults" class="sidebar" style="display:none"></div>
+		<input id="placeSearch" class="controls" type="text" placeholder="Search for location">
 		<div id="map"></div>
 	</div>
-	<script src="//maps.googleapis.com/maps/api/js?key=&callback=initMap" async defer></script>
+	<script src="//maps.googleapis.com/maps/api/js?callback=initMap&libraries=places" async defer></script>
   </body>
 </html>

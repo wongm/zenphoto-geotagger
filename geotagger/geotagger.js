@@ -26,8 +26,35 @@ function initMap() {
 		title: 'Click to focus',
 		draggable: true
 	});
-	
+
 	updateLatLng(marker.getPosition());
+	
+	// Create the search box and link it to the UI element.
+	var input = document.getElementById('placeSearch');
+	var searchBox = new google.maps.places.SearchBox(input);
+	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	
+	// Listen for the event fired when the user selects a prediction and retrieve more details for that place.
+	
+	searchBox.addListener('places_changed', function() {
+		var places = searchBox.getPlaces();
+		var bounds = new google.maps.LatLngBounds();
+
+		if (places.length == 0) {
+			return;
+		}
+		
+		if (places[0].geometry.viewport) {
+			// Only geocodes have viewport.
+			bounds.union(places[0].geometry.viewport);
+		} else {
+			bounds.extend(places[0].geometry.location);
+		}
+		
+		marker.setPosition(places[0].geometry.location);
+		updateLatLng(places[0].geometry.location);
+		map.fitBounds(bounds);
+	});
 	
 	marker.addListener('dragend', function() {
 		updateLatLng(marker.getPosition());
