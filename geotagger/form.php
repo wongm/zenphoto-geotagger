@@ -2,13 +2,14 @@
 <html>
   <head>
     <title>Zenphoto Geotagger</title>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<?php printZenJavascripts() ?>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="geotagger.js"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="geotagger.css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   </head>
   <body>
+	<?php adminToolbox() ?>
 	<div id="wrapper">
 		<form id="searchForm" class="sidebar">
 			<div id="searchPanel">
