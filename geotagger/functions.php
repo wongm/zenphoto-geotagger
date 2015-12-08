@@ -54,7 +54,7 @@ function drawResults()
 		$caption = get_language_string($image['title'], $locale);
 		$description = get_language_string($image['desc'], $locale);
 		
-		$args = getImageParameters(array(250));
+		$args = getImageParameters(array('thumb'));
 		$filename = getImageURI($args, $image['folder'], $image['filename'], $image['mtime']);
 		
 		if (strlen($description) > 0)
