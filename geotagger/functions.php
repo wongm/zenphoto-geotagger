@@ -43,7 +43,9 @@ function drawResults()
 	$sql = "SELECT i.id, i.filename, i.title, i.filename, i.mtime, i.desc, a.folder, a.title AS album_title
 			FROM " . prefix('images') . " i
 			INNER JOIN " . prefix('albums') . " a ON i.albumid = a.id 
-			WHERE " . $sqlWhere . " LIMIT 0, 20";
+			WHERE " . $sqlWhere . "
+			ORDER BY i.date DESC
+			LIMIT 0, 20";
 	$imageResults = query_full_array($sql);
 	$imageId = 0;
 	
