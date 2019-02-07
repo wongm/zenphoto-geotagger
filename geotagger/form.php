@@ -33,6 +33,6 @@
 		<input id="placeSearch" class="controls" type="text" placeholder="Search for location">
 		<div id="map"></div>
 	</div>
-	<script src="//maps.googleapis.com/maps/api/js?callback=initMap&libraries=places" async defer></script>
+	<script src="//maps.googleapis.com/maps/api/js?callback=initMap&libraries=places&key=<?php echo getOption("gmap_api_key"); ?>" async defer></script>
   </body>
 </html>
